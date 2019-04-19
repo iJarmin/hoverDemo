@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>hoverDemo</title>
     <script src="node_modules/jquery/dist/jquery.js"></script>
-
     <style>
         h1{
             color: #000000;
@@ -18,6 +17,7 @@
     </style>
 </head>
 <body>
+<div id="colorContainer"></div>
 <h1>鼠标附上去换颜色</h1>
 <ul>
     <li>red</li>
@@ -25,23 +25,18 @@
     <li>blue</li>
 </ul>
 <script>
-    if(!localStorage.getItem('flag')){
-        localStorage.setItem('color','aqua')
-    }
-    document.write("<style>\n" +
-        "        h1:hover{\n" +
-        "            color: "+localStorage.getItem('color')+" !important;\n" +
-        "        }\n" +
-        "    </style>")
     $(function () {
         $('ul li').on('click',function () {
-            localStorage.setItem('color',$(this).text())
-            localStorage.setItem('flag',true)
-            window.location.reload()
+            $('#colorContainer').html('').append("<style>\n" +
+                "        h1:hover{\n" +
+                "            color: "+$(this).text()+" !important;\n" +
+                "        }\n" +
+                "    </style>")
         })
     })
 
 </script>
 </body>
-
 </html>
+<!--作者：李佳明同学-->
+<!--简书：https://www.jianshu.com/u/6e2502aaf388-->
